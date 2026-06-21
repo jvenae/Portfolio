@@ -1,209 +1,72 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Lara - Aerospace Engineer</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- Add Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Lara</title>
+<meta name="description" content="Jose Lara — aerospace & hardware engineer.">
+
+<!-- Instrument Serif (display) · JetBrains Mono (accent) via Google; Satoshi (body) via Fontshare -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">Jose Lara</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Jose Lara</h1>
-            <h2>Aerospace Engineer</h2>
-            <p>It's 2025 and BUILDING has never been easier</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-        <div class="hero-gallery rotating-gallery">
-            <div class="gallery-image active">
-                <img src="assets/thrust-stand.jpg" alt="Drone Propeller Thrust Stand">
-            </div>
-            <div class="gallery-image">
-                <img src="assets/rc-plane.jpg" alt="Competition RC Plane">
-            </div>
-            <div class="gallery-image">
-                <img src="assets/prop-balancer.jpg" alt="Propeller Balancer">
-            </div>
-            <div class="gallery-image">
-                <img src="assets/battery-tester.jpg" alt="Battery Leak Tester">
-            </div>
-            <div class="gallery-image">
-                <img src="assets/thermal-panel.jpg" alt="Thermal Actuator Panel">
-            </div>
-            <div class="gallery-image">
-                <img src="assets/lightsaber.jpg" alt="Lightsaber Hilt">
-            </div>
-        </div>
-    </section>
+  <div class="status">
+    <span>Jose Lara</span>
+    <span><span class="dim">Los Angeles, CA</span> &nbsp; Last rev 2026.06.19</span>
+  </div>
 
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <!-- Your existing about text paragraphs -->
-                <p>Born and raised in Lima, Peru I moved to the US in 2020 to learn how to build cool stuff. Got my aero engineering degree from Purdue in 2024 so that I could call myself a rocket scientist.</p>
-                <p>I currently focus on solving renewable hydrocarbons at scale, learning from the best along the way. I can machine, weld, code, cut, solder, inject, print, and assemble mostly anything I put my mind to.</p>   
-                <p>Spending half of my free time breaking hardware appart and building things that like to move (intentionally or not) some call robots, and the other half cooking some fire dinner.</p>   
-                <p>I’ve been a surfer for years — always chasing the next wave. Now, I’m chasing the next hardware revolution. Hardware is hard, and that’s exactly why I love it.</p>
-                <p>I’m looking to break into world-changing engineering startups, where real innovation happens. If you are building something cool, I would love to learn more about it!</p>
-            </div>
-        </div>
-    </section>
+  <main class="wrap">
+    <div class="ruler" aria-hidden="true"></div>
+    <div class="col">
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-            
-            <!-- Drone Propeller Thrust Stand -->
-            <article class="project-card">
-                <a href="projects/thrust-stand.html" class="project-image">
-                    <img src="assets/thrust-stand.jpg" alt="Drone Propeller Thrust Stand">
-                </a>
-                <div class="project-content">
-                    <a href="projects/thrust-stand.html"><h3>Drone Propeller Thrust Stand</h3></a>
-                    <p>Test apparatus designed to measure static thrust and efficiency of drone propellers. Features data acquisition system for real-time performance analysis.</p>
-                    <div class="project-tags">
-                        <span>Testing</span>
-                        <span>Robotics</span>
-                        <span>Data Analysis</span>
-                        <span>3D Printing</span>
-                    </div>
-                </div>
-            </article>
+      <header class="reveal">
+        <h1>Jose Lara</h1>
+        <p class="role">Hardware Engineer</p>
+      </header>
 
-            <!-- Competition RC Aircraft -->
-            <article class="project-card">
-                <a href="projects/rc-plane.html" class="project-image">
-                    <img src="assets/rc-plane.jpg" alt="Competition RC Aircraft">
-                </a>
-                <div class="project-content">
-                    <a href="projects/rc-plane.html"><h3>Competition RC Aircraft</h3></a>
-                    <p>Designed and built an RC aircraft for a senior design competition, getting the first place by optimizing performance for speed and payload capacity.</p>
-                    <div class="project-tags">
-                        <span>Design</span>
-                        <span>Propulsion</span>
-                        <span>Control</span>
-                        <span>Fabrication</span>
-                    </div>
-                </div>
-            </article>
+      <p class="intro reveal">
+        I design and build hardware, from drones to the machines that make synthetic fuel.
+      </p>
 
-            <!-- Propeller Static Balancer -->
-            <article class="project-card">
-                <a href="projects/prop-balancer.html" class="project-image">
-                    <img src="assets/prop-balancer.jpg" alt="Propeller Static Balancer">
-                </a>
-                <div class="project-content">
-                    <a href="projects/prop-balancer.html"><h3>Propeller Static Balancer</h3></a>
-                    <p>Pneumatic-powered drone propeller static balancer, using air bearings for ultra-low friction and high-precision balancing.</p>
-                    <div class="project-tags">
-                        <span>Tolerance Stack</span>
-                        <span>Pneumatics</span>
-                        <span>Machine Design</span>
-                    </div>
-                </div>
-            </article>
+      <nav class="menu reveal">
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+      </nav>
 
-            <!-- Battery Leak Tester -->
-            <article class="project-card">
-                <a href="projects/battery-tester.html" class="project-image">
-                    <img src="assets/battery-tester.jpg" alt="Battery Leak Tester">
-                </a>
-                <div class="project-content">
-                    <a href="projects/battery-tester.html"><h3>Battery Leak Tester</h3></a>
-                    <p>Automated testing system for identifying microscopic leaks in battery casings. Incorporates pressure differential sensors and computerized analysis.</p>
-                    <div class="project-tags">
-                        <span>Leak Testing</span>
-                        <span>Matlab</span>
-                        <span>Sealing</span>
-                        <span>Reliability</span>
-                    </div>
-                </div>
-            </article>
+      <section class="reveal">
+        <p class="label">Latest Work</p>
+        <ul class="work">
+          <li><a href="rc-plane.html"><span class="num">006</span><span class="title">Competition RC Aircraft</span><span class="tag">2025</span></a></li>
+          <li><a href="thrust-stand.html"><span class="num">005</span><span class="title">Drone Propeller Thrust Stand</span><span class="tag">Jun 2024</span></a></li>
+          <li><a href="prop-balancer.html"><span class="num">004</span><span class="title">Propeller Static Balancer</span><span class="tag">May 2024</span></a></li>
+          <li><a href="battery-tester.html"><span class="num">003</span><span class="title">Battery Leak Tester</span><span class="tag">Feb 2024</span></a></li>
+          <li><a href="thermal-panel.html"><span class="num">002</span><span class="title">Thermal Actuator Panel</span><span class="tag">Nov 2023</span></a></li>
+          <li><a href="lightsaber.html"><span class="num">001</span><span class="title">Lightsaber Hilt</span><span class="tag">Jun 2023</span></a></li>
+        </ul>
+      </section>
 
-            <!-- Thermal Actuator Panel -->
-            <article class="project-card">
-                <a href="projects/thermal-panel.html" class="project-image">
-                    <img src="assets/thermal-panel.jpg" alt="Thermal Actuator Panel">
-                </a>
-                <div class="project-content">
-                    <a href="projects/thermal-panel.html"><h3>Thermal Actuator Panel</h3></a>
-                    <p>Aluminum thermal actuator system for space habitat environmental hazard simulation and real-time control.</p>
-                    <div class="project-tags">
-                        <span>PID</span>
-                        <span>Machining</span>
-                        <span>CFD</span>
-                        <span>Plumbing</span>
-                    </div>
-                </div>
-            </article>
+      <section class="contact reveal">
+        <p class="label">Contact</p>
+        <p><a href="mailto:jelv268@gmail.com">jelv268@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/jose-e-lara/">LinkedIn</a></p>
+      </section>
 
-            <!-- Lightsaber Hilt -->
-            <article class="project-card">
-                <a href="projects/lightsaber.html" class="project-image">
-                    <img src="assets/lightsaber.jpg" alt="Lightsaber Hilt">
-                </a>
-                <div class="project-content">
-                    <a href="projects/lightsaber.html"><h3>Lightsaber Hilt</h3></a>
-                    <p>Custom-designed lightsaber hilt passion project incorporating screen-accurate details and engineering principles. CNC machined from stainless steel and brass, combining precision engineering with craftsmanship.</p>
-                    <div class="project-tags">
-                        <span>CAM</span>
-                        <span>Machining</span>
-                        <span>Welding</span>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </section>
+      <footer>
+        Built static · No trackers · Set in Instrument Serif, Satoshi &amp; JetBrains Mono
+      </footer>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <p>Let's build something great together.</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>(312) 647-0838</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span><a href="mailto:lara21@purdue.edu">lara21@purdue.edu</a></span>
-                </div>
-                <div class="contact-item">
-                    <a href="https://www.linkedin.com/in/jose-e-lara/" target="_blank" class="linkedin-button">
-                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+  </main>
 
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Jose Lara. Rights and ownership of all images and media belong to Jose Lara.</p>
-    </footer>
-
-    <script src="scripts/main.js"></script>
 </body>
 </html>

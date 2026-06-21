@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battery Leak Tester — Jose Lara</title>
+<meta name="description" content="Non-destructive air-pressure leak testing for IPX5 battery packs. Jose Lara.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>
+  <div class="status">
+    <span><a href="index.html">Jose Lara</a></span>
+    <span><span class="dim">No. 003</span> &nbsp; Feb 2024</span>
+  </div>
+
+  <main class="wrap article">
+    <div class="ruler" aria-hidden="true"></div>
+    <div class="col">
+
+      <a class="backlink" href="index.html">Index</a>
+
+      <header class="article-header reveal">
+        <h1>Battery Leak Tester</h1>
+        <p class="subtitle">Non-destructive leak testing for IPX5 battery packs — one minute per pack, &gt;99% accuracy.</p>
+        <p class="post-meta">Feb 2024 · Updated Jun 2026 &nbsp; <span class="cat">No. 003 · Reliability</span></p>
+      </header>
+      <hr class="rule">
+
+      <section>
+        <p class="label">Summary</p>
+        <p>How do you certify IPX5 water resistance without destroying the pack? I developed a non-destructive leak test for a drone-delivery startup, replacing water-based testing with air pressurization. A correlation study linked air-leak rate to water ingress, enabling fast, automated detection — &gt;99% accuracy on manufacturing defects, at one minute per pack.</p>
+      </section>
+
+      <section>
+        <p class="label">The Build</p>
+        <p>The foundation was a correlation study: using precision optical laser pinholes, I mapped air-leak rate to real water ingress so a clean air test could stand in for the destructive one. To trust the numbers, I designed and machined an aluminum master volume that validated the equipment's accuracy.</p>
+        <p>Testing combined pressure-decay and wind-blown rain methods, all driven by a MATLAB-based end-of-line app for fully automated runs. Strict pass/fail thresholds on water ingress kept quality control consistent across the line.</p>
+      </section>
+
+      <section>
+        <p class="label">Results</p>
+        <ul class="bullets">
+          <li>Cycle time down to one minute per pack.</li>
+          <li>Fully non-destructive — no more water testing.</li>
+          <li>&gt;99% defect-detection rate.</li>
+          <li>Standardized and repeatable for consistent QC.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="label">Specifications</p>
+        <div class="specs">
+          <div class="row"><span class="k">Requirement</span><span class="dots"></span><span class="v">IPX5 water resistance</span></div>
+          <div class="row"><span class="k">Method</span><span class="dots"></span><span class="v">Non-destructive air pressurization</span></div>
+          <div class="row"><span class="k">Correlation</span><span class="dots"></span><span class="v">Air-leak rate mapped to water ingress</span></div>
+          <div class="row"><span class="k">Characterization</span><span class="dots"></span><span class="v">Custom manifold with optical laser pinholes</span></div>
+          <div class="row"><span class="k">Calibration</span><span class="dots"></span><span class="v">Machined aluminum master volume</span></div>
+          <div class="row"><span class="k">Tests</span><span class="dots"></span><span class="v">Pressure decay · wind-blown rain</span></div>
+          <div class="row"><span class="k">Automation</span><span class="dots"></span><span class="v">MATLAB-based EOL test app</span></div>
+          <div class="row"><span class="k">Accuracy</span><span class="dots"></span><span class="v">&gt;99% defect detection · 1 min/pack</span></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="label">Gallery</p>
+        <div class="gallery">
+          <figure><a href="img/battery-tester/image1.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image1.jpg" alt="Battery leak tester, fig 1"></a></figure>
+          <figure><a href="img/battery-tester/image2.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image2.jpg" alt="Battery leak tester, fig 2"></a></figure>
+          <figure><a href="img/battery-tester/image3.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image3.jpg" alt="Battery leak tester, fig 3"></a></figure>
+          <figure><a href="img/battery-tester/image4.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image4.jpg" alt="Battery leak tester, fig 4"></a></figure>
+          <figure><a href="img/battery-tester/image5.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image5.jpg" alt="Battery leak tester, fig 5"></a></figure>
+          <figure><a href="img/battery-tester/image6.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image6.jpg" alt="Battery leak tester, fig 6"></a></figure>
+          <figure><a href="img/battery-tester/image7.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image7.jpg" alt="Battery leak tester, fig 7"></a></figure>
+          <figure><a href="img/battery-tester/image8.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image8.jpg" alt="Battery leak tester, fig 8"></a></figure>
+          <figure><a href="img/battery-tester/image9.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image9.jpg" alt="Battery leak tester, fig 9"></a></figure>
+          <figure><a href="img/battery-tester/image10.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image10.jpg" alt="Battery leak tester, fig 10"></a></figure>
+          <figure><a href="img/battery-tester/image11.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image11.jpg" alt="Battery leak tester, fig 11"></a></figure>
+          <figure><a href="img/battery-tester/image12.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/battery-tester/image12.jpg" alt="Battery leak tester, fig 12"></a></figure>
+        </div>
+      </section>
+
+      <footer>
+        Built static · No trackers · Set in Instrument Serif, Satoshi &amp; JetBrains Mono
+      </footer>
+
+    </div>
+  </main>
+</body>
+</html>
