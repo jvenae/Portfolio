@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drone Propeller Thrust Stand — Jose Lara</title>
 <meta name="description" content="A thrust stand for validating duct-thruster performance. Jose Lara.">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -18,8 +18,16 @@
     <span><span class="dim">No. 005</span> &nbsp; Jun 2024</span>
   </div>
 
-  <main class="wrap article">
+  <main class="wrap article story">
     <div class="ruler" aria-hidden="true"></div>
+    <nav class="contents" aria-label="Contents">
+      <p class="contents-label">Contents</p>
+      <a href="#summary">Summary</a>
+      <a href="#build">Build</a>
+      <a href="#results">Results</a>
+      <a href="#specs">Specs</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
     <div class="col">
 
       <a class="backlink" href="index.html">Index</a>
@@ -31,18 +39,18 @@
       </header>
       <hr class="rule">
 
-      <section>
+      <section id="summary">
         <p class="label">Summary</p>
         <p>Reliable drone propulsion starts with rigorous testing. I developed a thrust stand for a drone-delivery startup to validate yaw-thruster performance. The thrusters operate inside ducts, generating bidirectional thrust, and the stand automates endurance, thermal, and vibration testing — delivering high-fidelity data to improve performance and durability.</p>
       </section>
 
-      <section>
+      <section id="build">
         <p class="label">The Build</p>
         <p>The aerodynamic surfaces began in Siemens NX, modeled to keep flow realistic over the ducts. I built the stand from machined aluminum and steel, using 3D-printed parts to validate airflow before committing to injection-molded propellers.</p>
         <p>A motor controller, 6-DOF load cell, and rotary encoders captured torque and thrust, with wind-tunnel runs refining the numbers. From there I defined failure criteria and tuned thruster efficiency through CFD, FEA, and vibration testing.</p>
       </section>
 
-      <section>
+      <section id="results">
         <p class="label">Results</p>
         <ul class="bullets">
           <li>A reliable platform for automated, repeatable thrust and endurance validation.</li>
@@ -51,7 +59,7 @@
         </ul>
       </section>
 
-      <section>
+      <section id="specs">
         <p class="label">Specifications</p>
         <div class="specs">
           <div class="row"><span class="k">Sensing</span><span class="dots"></span><span class="v">6-DOF load cell · rotary encoder · accelerometers · thermocouple</span></div>
@@ -63,23 +71,23 @@
         </div>
       </section>
 
-      <section>
+      <section id="gallery">
         <p class="label">Gallery</p>
         <div class="gallery">
-          <figure><a href="img/thrust-stand/image1.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image1.jpg" alt="Thrust stand, fig 1"></a></figure>
-          <figure><a href="img/thrust-stand/image2.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image2.jpg" alt="Thrust stand, fig 2"></a></figure>
-          <figure><a href="img/thrust-stand/image3.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image3.jpg" alt="Thrust stand, fig 3"></a></figure>
-          <figure><a href="img/thrust-stand/image4.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image4.jpg" alt="Thrust stand, fig 4"></a></figure>
-          <figure><a href="img/thrust-stand/image5.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image5.jpg" alt="Thrust stand, fig 5"></a></figure>
-          <figure><a href="img/thrust-stand/image6.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image6.jpg" alt="Thrust stand, fig 6"></a></figure>
-          <figure><a href="img/thrust-stand/image7.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image7.jpg" alt="Thrust stand, fig 7"></a></figure>
-          <figure><a href="img/thrust-stand/image8.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image8.jpg" alt="Thrust stand, fig 8"></a></figure>
-          <figure><a href="img/thrust-stand/image9.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image9.jpg" alt="Thrust stand, fig 9"></a></figure>
-          <figure><a href="img/thrust-stand/image10.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image10.jpg" alt="Thrust stand, fig 10"></a></figure>
-          <figure><a href="img/thrust-stand/image11.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image11.jpg" alt="Thrust stand, fig 11"></a></figure>
-          <figure><a href="img/thrust-stand/image12.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image12.jpg" alt="Thrust stand, fig 12"></a></figure>
-          <figure><a href="img/thrust-stand/image13.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image13.jpg" alt="Thrust stand, fig 13"></a></figure>
-          <figure><a href="img/thrust-stand/image14.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/thrust-stand/image14.jpg" alt="Thrust stand, fig 14"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image1.jpg" data-caption="The thrust stand"><img loading="lazy" decoding="async" src="img/thrust-stand/image1.jpg" alt="Thrust stand, fig 1"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image2.jpg" data-caption="Load cell mount"><img loading="lazy" decoding="async" src="img/thrust-stand/image2.jpg" alt="Thrust stand, fig 2"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image3.jpg" data-caption="Ducted thruster"><img loading="lazy" decoding="async" src="img/thrust-stand/image3.jpg" alt="Thrust stand, fig 3"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image4.jpg" data-caption="DAQ wiring"><img loading="lazy" decoding="async" src="img/thrust-stand/image4.jpg" alt="Thrust stand, fig 4"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image5.jpg" data-caption="Wind tunnel run"><img loading="lazy" decoding="async" src="img/thrust-stand/image5.jpg" alt="Thrust stand, fig 5"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image6.jpg" data-caption="Rotary encoder"><img loading="lazy" decoding="async" src="img/thrust-stand/image6.jpg" alt="Thrust stand, fig 6"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image7.jpg" data-caption="Machined aluminum hub"><img loading="lazy" decoding="async" src="img/thrust-stand/image7.jpg" alt="Thrust stand, fig 7"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image8.jpg" data-caption="Duct geometry"><img loading="lazy" decoding="async" src="img/thrust-stand/image8.jpg" alt="Thrust stand, fig 8"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image9.jpg" data-caption="Motor controller bench"><img loading="lazy" decoding="async" src="img/thrust-stand/image9.jpg" alt="Thrust stand, fig 9"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image10.jpg" data-caption="Endurance test setup"><img loading="lazy" decoding="async" src="img/thrust-stand/image10.jpg" alt="Thrust stand, fig 10"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image11.jpg" data-caption="SLS-printed aero surface"><img loading="lazy" decoding="async" src="img/thrust-stand/image11.jpg" alt="Thrust stand, fig 11"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image12.jpg" data-caption="Vibration rig"><img loading="lazy" decoding="async" src="img/thrust-stand/image12.jpg" alt="Thrust stand, fig 12"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image13.jpg" data-caption="Thermal probe placement"><img loading="lazy" decoding="async" src="img/thrust-stand/image13.jpg" alt="Thrust stand, fig 13"></a></figure>
+          <figure><a class="g-link" href="img/thrust-stand/image14.jpg" data-caption="Logged thrust curves"><img loading="lazy" decoding="async" src="img/thrust-stand/image14.jpg" alt="Thrust stand, fig 14"></a></figure>
         </div>
       </section>
 
@@ -89,5 +97,6 @@
 
     </div>
   </main>
+<script src="article.js"></script>
 </body>
 </html>

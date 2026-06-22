@@ -365,7 +365,8 @@ body.lb-open{ overflow:hidden; }
 /* ============================================================
    ABOUT — serif centered section headings + contents nav
    ============================================================ */
-.about-page .label{
+.about-page .label,
+.story .label{
   font-family:var(--serif);
   font-size:1.9rem;
   font-weight:700;
@@ -376,7 +377,8 @@ body.lb-open{ overflow:hidden; }
   text-align:center;
   margin:0 0 1.5rem;
 }
-.about-page .label::before{ content:none; }
+.about-page .label::before,
+.story .label::before{ content:none; }
 
 .about-page .article-header{ display:flex; align-items:center; gap:1.5rem; }
 .about-page .head-text{ min-width:0; }
@@ -391,6 +393,8 @@ body.lb-open{ overflow:hidden; }
   top:9rem;
   left:calc(50% + 30rem);
   width:9rem;
+  max-height:calc(100vh - 12rem);
+  overflow-y:auto;
   display:flex;
   flex-direction:column;
   gap:0.3rem;
@@ -436,3 +440,42 @@ body.lb-open{ overflow:hidden; }
   .work .tag{ display:none; }
   .gallery{ grid-template-columns:1fr; }
 }
+
+/* equations (first-principles writeups) — native MathML, LaTeX-like */
+.eq{
+  text-align:center;
+  color:var(--ink);
+  margin:1.9rem 0;
+  font-size:1.35rem;
+}
+math{ font-family:math; }
+
+/* data tables (engineering writeups) */
+.dtable{ width:100%; max-width:42rem; border-collapse:collapse; margin:1.6rem 0; font-size:0.96rem; }
+.dtable th{ font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); font-weight:400; text-align:left; padding:0.5rem 1rem 0.5rem 0; border-bottom:1px solid var(--rule); }
+.dtable td{ padding:0.55rem 1rem 0.55rem 0; border-bottom:1px solid var(--rule); vertical-align:top; }
+.dtable td.num{ font-family:var(--mono); white-space:nowrap; }
+.dtable td:last-child, .dtable th:last-child{ padding-right:0; color:var(--muted); }
+
+/* inline story figures */
+.sfig{ margin:2rem 0; max-width:36rem; }
+.sfig img{ width:100%; height:auto; display:block; }
+.sfig figcaption{ text-align:center; }
+
+/* story articles: center every content block on one axis */
+.story section > p,
+.story .specs,
+.story .dtable,
+.story .sfig,
+.story .bullets,
+.story .steps,
+.story .exp{ margin-left:auto; margin-right:auto; }
+.gallery .g-link{ cursor:zoom-in; }
+
+/* story article: one true centered axis (no ruler offset) */
+.story .col{ padding-left:0; }
+/* header: left-aligned text inside a centered block, matching the body measure */
+.story .article-header{ text-align:left; max-width:36rem; margin-left:auto; margin-right:auto; }
+
+/* story section titles: centered within the same measure as the body */
+.story .label{ max-width:36rem; margin-left:auto; margin-right:auto; }

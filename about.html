@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Jose Lara</title>
 <meta name="description" content="Jose Lara, mechanical engineer in Los Angeles. Hardware, and the machines that test it.">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -18,7 +18,7 @@
     <span><span class="dim">Los Angeles, CA</span> &nbsp; About</span>
   </div>
 
-  <main class="wrap article about-page">
+  <main class="wrap article about-page story">
     <div class="ruler" aria-hidden="true"></div>
 
     <nav class="contents" aria-label="Contents">
@@ -95,22 +95,6 @@
     </div>
   </main>
 
-  <script>
-  (function(){
-    var nav = document.querySelector('.contents');
-    if(!nav || !('IntersectionObserver' in window)) return;
-    var links = {};
-    nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          nav.querySelectorAll('a').forEach(function(a){ a.classList.remove('active'); });
-          var a = links[e.target.id]; if(a) a.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-25% 0px -65% 0px' });
-    document.querySelectorAll('main section[id]').forEach(function(s){ obs.observe(s); });
-  })();
-  </script>
+  <script src="article.js"></script>
 </body>
 </html>

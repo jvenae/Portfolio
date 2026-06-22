@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Propeller Static Balancer — Jose Lara</title>
-<meta name="description" content="An air-bearing static balancer for quadcopter propellers. Jose Lara.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="An air-bearing static balancer for drone propellers, reasoned from first principles. Jose Lara.">
+<link rel="stylesheet" href="style.css?v=2">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -15,11 +15,28 @@
 <body>
   <div class="status">
     <span><a href="index.html">Jose Lara</a></span>
-    <span><span class="dim">No. 004</span> &nbsp; May 2024</span>
+    <span><span class="dim">No. 003</span> &nbsp; Feb 2024</span>
   </div>
 
-  <main class="wrap article">
+  <main class="wrap article story">
     <div class="ruler" aria-hidden="true"></div>
+
+    <nav class="contents" aria-label="Contents">
+      <p class="contents-label">Contents</p>
+      <a href="#problem">Problem</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#measuring">Measuring</a>
+      <a href="#sensitivity">Sensitivity</a>
+      <a href="#bearing">Bearing</a>
+      <a href="#constraints">Constraints</a>
+      <a href="#design">Design</a>
+      <a href="#correction">Correction</a>
+      <a href="#build">Build &amp; test</a>
+      <a href="#results">Results</a>
+      <a href="#specs">Specs</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+
     <div class="col">
 
       <a class="backlink" href="index.html">Index</a>
@@ -27,59 +44,148 @@
       <header class="article-header reveal">
         <h1>Propeller Static Balancer</h1>
         <p class="subtitle">An air-bearing balancer that cut prop balancing from five minutes to thirty seconds.</p>
-        <p class="post-meta">May 2024 · Updated Jun 2026 &nbsp; <span class="cat">No. 004 · Pneumatics</span></p>
+        <p class="post-meta">Feb 2024 · Updated Jun 2026 &nbsp; <span class="cat">No. 003 · Pneumatics</span></p>
       </header>
       <hr class="rule">
 
       <section>
-        <p class="label">Summary</p>
-        <p>Precision matters in drone delivery. I developed an end-of-line static balancer to fine-tune quadcopter propellers, reducing vibration and improving flight stability. Air bearings minimize friction so even the smallest imbalance shows up — and the upgrade cut balancing time from five minutes to under thirty seconds per prop, a 10× improvement.</p>
+        <p>This was my first project as a mechatronics intern on Zipline's powertrain team. We were building two-blade propellers about thirty inches across: a carbon fiber skin over a foam core, spun on a brass hub, turning up to roughly 4,000 rpm.</p>
+        <p>Each prop weighed around 300 grams, and nearly every one came off the line with a small mass imbalance, usually a millimeter or two between its center of mass and its center of rotation. That sounds negligible until you remember it is spinning at 4,000 rpm, where a tiny offset turns into real vibration.</p>
       </section>
 
-      <section>
-        <p class="label">The Build</p>
-        <p>The core idea is sensitivity: the less friction in the system, the smaller the imbalance you can resolve. Air bearings carry the shaft on a film of air, and a low moment of inertia keeps the assembly responsive to the tiniest offset.</p>
-        <p>Structurally, machined aluminum brackets and a hardened SS316 shaft hold tight tolerances to keep the shaft straight under load. A laser pointer marks the optimal counterweight position, and a defined pass/fail limit makes the result repeatable across operators.</p>
+      <section id="problem">
+        <p class="label">The Problem</p>
+        <p>We had to catch and correct that imbalance on every prop. The easy option was a cheap static balancer from the RC hobby world, the kind you order on Amazon for model planes, but they were not repeatable enough to trust.</p>
+        <figure class="sfig">
+          <img loading="lazy" decoding="async" src="img/prop-balancer/hobby-balancer.jpg" alt="A hobby-grade RC propeller static balancer">
+          <figcaption>The hobby-grade balancer we started with</figcaption>
+        </figure>
+        <p>The real instrument, a dynamic balancing machine, was on order and more than six months out. So the question was narrow and practical: could I build something fast that was reliable enough to hold us over?</p>
       </section>
 
-      <section>
+      <section id="requirements">
+        <p class="label">Requirements</p>
+        <p>Start from what we actually dislike: the rotating force the imbalance throws once the prop is at speed. Treating the imbalance as a small mass <math><msub><mi>m</mi><mi>i</mi></msub></math> at radius <math><msub><mi>r</mi><mi>i</mi></msub></math>, that force is</p>
+        <p class="eq"><math displaystyle="true"><mi>F</mi><mo>=</mo><msub><mi>m</mi><mi>i</mi></msub><mo>&#8290;</mo><msub><mi>r</mi><mi>i</mi></msub><mo>&#8290;</mo><msup><mi>&#969;</mi><mn>2</mn></msup></math></p>
+        <p>The product <math><msub><mi>m</mi><mi>i</mi></msub><msub><mi>r</mi><mi>i</mi></msub></math> is the unbalance, <math><mi>U</mi></math>, so <math><mi>F</mi><mo>=</mo><mi>U</mi><msup><mi>&#969;</mi><mn>2</mn></msup></math>. It climbs with the square of speed, which is exactly why 4,000 rpm is the number that matters.</p>
+        <p>A prop sitting a couple of millimeters off center carries a small but real unbalance, and squaring the speed turns it into a sideways force on the order of a hundred newtons, yanking once per revolution. That is the vibration we needed to kill.</p>
+        <p>So the requirement is a target residual: trim the unbalance until that rotating force drops to something the powertrain is happy to live with. Whatever that force ceiling is, it sets an unbalance ceiling,</p>
+        <p class="eq"><math displaystyle="true"><msub><mi>U</mi><mtext>max</mtext></msub><mo>=</mo><mfrac><msub><mi>F</mi><mtext>max</mtext></msub><msup><mi>&#969;</mi><mn>2</mn></msup></mfrac></math></p>
+        <p>and that is the real job. The balancer has to let us find and trim every prop down to around <math><msub><mi>U</mi><mtext>max</mtext></msub></math>, and point at the heavy side without lying.</p>
+      </section>
+
+      <section id="measuring">
+        <p class="label">Measuring Imbalance</p>
+        <p>A static balancer reads that unbalance with gravity instead of speed. Put the prop on a horizontal axis and let it turn freely, and gravity pulls on <math><msub><mi>m</mi><mi>i</mi></msub></math> to make a torque about the axis:</p>
+        <p class="eq"><math displaystyle="true">
+          <mi>T</mi><mo>=</mo>
+          <msub><mi>m</mi><mi>i</mi></msub><mo>&#8290;</mo>
+          <mi>g</mi><mo>&#8290;</mo>
+          <msub><mi>r</mi><mi>i</mi></msub><mo>&#8290;</mo>
+          <mi>cos</mi><mo>&#8289;</mo><mi>&#952;</mi>
+        </math></p>
+        <p>where <math><mi>&#952;</mi></math> is the angle of the heavy spot above horizontal. The torque is largest when the blade is level and falls to zero when the heavy spot hangs straight down.</p>
+        <p>That torque accelerates the prop:</p>
+        <p class="eq"><math displaystyle="true">
+          <mi>T</mi><mo>=</mo><mi>I</mi><mo>&#8290;</mo>
+          <mfrac><mrow><mi>d</mi><mi>&#969;</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac>
+        </math></p>
+        <p>and the imbalance barely changes <math><mi>I</mi></math>, since its contribution scales as <math><msub><mi>m</mi><mi>i</mi></msub><msubsup><mi>r</mi><mi>i</mi><mn>2</mn></msubsup></math> and <math><msub><mi>r</mi><mi>i</mi></msub></math> is tiny. So <math><mi>I</mi></math> stays essentially the prop's own inertia, and the whole thing behaves like a pendulum. It swings until the heavy side settles at the bottom.</p>
+        <p>Where it stops is the reading: the heavy side points down. And the smallest unbalance we have to resolve, <math><msub><mi>U</mi><mtext>max</mtext></msub></math>, shows up as the smallest torque we must respond to,</p>
+        <p class="eq"><math displaystyle="true"><msub><mi>T</mi><mtext>min</mtext></msub><mo>=</mo><msub><mi>U</mi><mtext>max</mtext></msub><mo>&#8290;</mo><mi>g</mi></math></p>
+        <p>That tiny gravity torque is the thing the entire machine has to be built around.</p>
+      </section>
+
+      <section id="sensitivity">
+        <p class="label">What Fights Sensitivity</p>
+        <p>Two things stand between that tiny torque and a reading we can trust: friction at the axis, and the inertia of whatever is spinning.</p>
+        <p>Friction sets a threshold. A plain journal bearing resists turning with a torque of about</p>
+        <p class="eq"><math displaystyle="true"><msub><mi>T</mi><mi>f</mi></msub><mo>=</mo><mi>&#956;</mi><mo>&#8290;</mo><mi>N</mi><mo>&#8290;</mo><msub><mi>r</mi><mi>s</mi></msub></math></p>
+        <p>where <math><mi>&#956;</mi></math> is the friction coefficient, <math><mi>N</mi></math> is the load the bearing carries (mostly the prop's weight), and <math><msub><mi>r</mi><mi>s</mi></msub></math> is the shaft radius. If <math><msub><mi>T</mi><mi>f</mi></msub></math> is larger than <math><msub><mi>T</mi><mtext>min</mtext></msub></math>, the prop never moves for a small imbalance and the tool quietly lies. The first hard requirement is therefore <math><msub><mi>T</mi><mi>f</mi></msub><mo>&lt;</mo><msub><mi>T</mi><mtext>min</mtext></msub></math>, with margin.</p>
+        <p>Inertia sets the speed of the answer. Rearranging the pendulum equation,</p>
+        <p class="eq"><math displaystyle="true"><mfrac><mrow><mi>d</mi><mi>&#969;</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mi>T</mi><mi>I</mi></mfrac></math></p>
+        <p>a smaller <math><mi>I</mi></math> means the prop accelerates toward heavy-side-down faster, so a faint imbalance still produces a visible swing in a reasonable time. The catch is that the prop itself dominates <math><mi>I</mi></math>. Modeling it as a slender rod,</p>
+        <p class="eq"><math displaystyle="true"><mi>I</mi><mo>&#8776;</mo><mfrac><mn>1</mn><mn>12</mn></mfrac><mo>&#8290;</mo><mi>m</mi><mo>&#8290;</mo><msup><mi>L</mi><mn>2</mn></msup></math></p>
+        <p>the prop's inertia dwarfs anything a thin shaft adds, by something like a factor of a million. We cannot make the system meaningfully faster by shrinking the shaft; the prop's inertia is simply what it is.</p>
+        <p>That tells us where to spend effort. Added inertia is already negligible, so the fight is almost entirely friction. We still keep the fixture light and small, because less rotating mass means a smaller bearing load <math><mi>N</mi></math>, which lowers <math><msub><mi>T</mi><mi>f</mi></msub></math> directly.</p>
+      </section>
+
+      <section id="bearing">
+        <p class="label">Choosing the Bearing</p>
+        <p>With friction as the binding constraint, the bearing is the whole ballgame. Here is roughly what the options give you:</p>
+        <table class="dtable">
+          <thead><tr><th>Bearing</th><th>Typical μ</th><th>At tiny torque</th></tr></thead>
+          <tbody>
+            <tr><td>Dry sliding, steel on steel</td><td class="num">~0.6</td><td>hopeless</td></tr>
+            <tr><td>Lubricated plain</td><td class="num">0.05-0.1</td><td>still swamps the signal</td></tr>
+            <tr><td>Rolling element, ball</td><td class="num">0.001-0.005</td><td>low on average, but notchy and not repeatable</td></tr>
+            <tr><td>Jewel pivot</td><td class="num">~0.0001</td><td>superb, but load-limited</td></tr>
+            <tr><td>Aerostatic, air</td><td class="num">~0.00001</td><td>no contact, smooth and repeatable</td></tr>
+          </tbody>
+        </table>
+        <p>On paper a good ball bearing looks fine, but at these tiny torques its real behavior is notchy. Detent torque from the balls, stiction, and runout that changes every time you spin it add up to readings you cannot repeat. That unrepeatability is precisely why the hobby balancers could not be trusted.</p>
+        <p>A jewel pivot is beautifully low-friction but does not love the load and side forces of a thirty inch prop. An air bearing has no solid contact at all. It floats the shaft on a film of pressurized air, so its friction is continuous, vanishingly small, and the same on every spin. For a sensitive, repeatable reading, it was the obvious pick.</p>
+      </section>
+
+      <section id="constraints">
+        <p class="label">Other Things That Bite</p>
+        <p>Once the bearing is nearly frictionless, effects you would normally ignore start to matter. A faint draft in the room pushes on a thirty inch blade with enough force to rival the imbalance torque, so the whole thing needs an enclosure to kill air currents.</p>
+        <p>The axis has to be truly level, or gravity itself biases which way the prop settles. The shaft has to be straight and run true, because any runout or eccentricity reads as an imbalance that is not really there. And the prop has to mount concentric and the same way every time, or you end up measuring the fixture instead of the part.</p>
+      </section>
+
+      <section id="design">
+        <p class="label">The Design</p>
+        <p>From there the build is mostly bookkeeping against those requirements. The core is an aerostatic bearing on a hardened, ground stainless steel shaft, held dead straight and run on shop air, with light machined aluminum brackets and an aluminum extrusion frame so the rotating mass stays small and the bearing load stays low.</p>
+        <p>A small enclosure blocks drafts, a level sets the axis true, and a laser pointer throws a line across the blade so you can mark exactly where a correction belongs. A fixed pass/fail threshold turns the settled position into the same yes-or-no for everyone on the line.</p>
+      </section>
+
+      <section id="correction">
+        <p class="label">Correcting the Imbalance</p>
+        <p>Finding the heavy side is half the job; the fix is adding matching weight to the light side. We used 1.0 inch circles of 0.1 mm stainless steel tape, added one at a time with a re-check after every circle.</p>
+        <p>Placing them along the blade from tip toward root tunes both how much weight you add and how much leverage it has, since a circle near the tip counts for far more unbalance than one near the root. The worst prop I balanced took about eleven circles walked down one blade before it would hold level.</p>
+      </section>
+
+      <section id="build">
+        <p class="label">Building and Testing</p>
+        <p>With the concept settled, the rest was sizing the shaft and bearing to the prop's weight, machining the brackets, plumbing the air, and assembling it on the extrusion frame. The real test was whether it could do the one thing it existed for: resolve down to about one tape circle of unbalance and point at the heavy side the same way twice.</p>
+        <p>I checked it against props I had already balanced and against deliberately mis-weighted ones, then tightened the level and the mounting until the readings repeated. Once they did, it went on the line and held until the dynamic balancer finally arrived.</p>
+      </section>
+
+      <section id="results">
         <p class="label">Results</p>
-        <ul class="bullets">
-          <li>10× faster — balancing time from five minutes to under thirty seconds.</li>
-          <li>Air bearings and low inertia sharpened imbalance detection.</li>
-          <li>Standardized pass/fail criteria for repeatable, reliable results.</li>
-        </ul>
+        <p>It did the job. Balancing dropped from around five minutes on the hobby tools to under thirty seconds, roughly ten times faster and far more consistent.</p>
+        <p>More importantly, it was trustworthy. The air bearing and a quiet, level, enclosed setup made it sensitive enough to catch the offsets that actually mattered at 4,000 rpm, and the fixed pass/fail line meant everyone got the same answer.</p>
       </section>
 
-      <section>
+      <section id="specs">
         <p class="label">Specifications</p>
         <div class="specs">
-          <div class="row"><span class="k">Purpose</span><span class="dots"></span><span class="v">EOL static balancer for quadcopter propellers</span></div>
-          <div class="row"><span class="k">Friction</span><span class="dots"></span><span class="v">Air bearings, ultra-low resistance</span></div>
-          <div class="row"><span class="k">Power</span><span class="dots"></span><span class="v">Pneumatic</span></div>
-          <div class="row"><span class="k">Structure</span><span class="dots"></span><span class="v">Machined aluminum brackets · hardened SS316 shaft · extrusion frame</span></div>
-          <div class="row"><span class="k">Alignment</span><span class="dots"></span><span class="v">Laser pointer for counterweight positioning</span></div>
+          <div class="row"><span class="k">Purpose</span><span class="dots"></span><span class="v">EOL static balancer for drone propellers</span></div>
+          <div class="row"><span class="k">Bearing</span><span class="dots"></span><span class="v">Aerostatic (air), near-zero friction</span></div>
+          <div class="row"><span class="k">Power</span><span class="dots"></span><span class="v">Pneumatic, shop air</span></div>
+          <div class="row"><span class="k">Structure</span><span class="dots"></span><span class="v">Machined aluminum brackets · hardened SS shaft · extrusion frame</span></div>
+          <div class="row"><span class="k">Alignment</span><span class="dots"></span><span class="v">Level axis · enclosure against drafts · laser line for marking</span></div>
           <div class="row"><span class="k">Cycle Time</span><span class="dots"></span><span class="v">&lt;30 s per prop (was 5 min)</span></div>
           <div class="row"><span class="k">Criteria</span><span class="dots"></span><span class="v">Defined pass/fail imbalance limits</span></div>
         </div>
       </section>
 
-      <section>
+      <section id="gallery">
         <p class="label">Gallery</p>
         <div class="gallery">
-          <figure><a href="img/prop-balancer/image1.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image1.jpg" alt="Prop balancer, fig 1"></a></figure>
-          <figure><a href="img/prop-balancer/image2.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image2.jpg" alt="Prop balancer, fig 2"></a></figure>
-          <figure><a href="img/prop-balancer/image3.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image3.jpg" alt="Prop balancer, fig 3"></a></figure>
-          <figure><a href="img/prop-balancer/image4.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image4.jpg" alt="Prop balancer, fig 4"></a></figure>
-          <figure><a href="img/prop-balancer/image5.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image5.jpg" alt="Prop balancer, fig 5"></a></figure>
-          <figure><a href="img/prop-balancer/image6.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image6.jpg" alt="Prop balancer, fig 6"></a></figure>
-          <figure><a href="img/prop-balancer/image7.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image7.jpg" alt="Prop balancer, fig 7"></a></figure>
-          <figure><a href="img/prop-balancer/image8.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image8.jpg" alt="Prop balancer, fig 8"></a></figure>
-          <figure><a href="img/prop-balancer/image9.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image9.jpg" alt="Prop balancer, fig 9"></a></figure>
-          <figure><a href="img/prop-balancer/image10.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image10.jpg" alt="Prop balancer, fig 10"></a></figure>
-          <figure><a href="img/prop-balancer/image11.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image11.jpg" alt="Prop balancer, fig 11"></a></figure>
-          <figure><a href="img/prop-balancer/image12.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image12.jpg" alt="Prop balancer, fig 12"></a></figure>
-          <figure><a href="img/prop-balancer/image13.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/prop-balancer/image13.jpg" alt="Prop balancer, fig 13"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image1.jpg" data-caption="The balancer on the bench"><img loading="lazy" decoding="async" src="img/prop-balancer/image1.jpg" alt="Prop balancer, fig 1"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image2.jpg" data-caption="Air-bearing spindle"><img loading="lazy" decoding="async" src="img/prop-balancer/image2.jpg" alt="Prop balancer, fig 2"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image3.jpg" data-caption="Hardened, ground stainless shaft"><img loading="lazy" decoding="async" src="img/prop-balancer/image3.jpg" alt="Prop balancer, fig 3"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image4.jpg" data-caption="Machined aluminum brackets"><img loading="lazy" decoding="async" src="img/prop-balancer/image4.jpg" alt="Prop balancer, fig 4"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image5.jpg" data-caption="Aluminum extrusion frame"><img loading="lazy" decoding="async" src="img/prop-balancer/image5.jpg" alt="Prop balancer, fig 5"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image6.jpg" data-caption="Shop-air supply"><img loading="lazy" decoding="async" src="img/prop-balancer/image6.jpg" alt="Prop balancer, fig 6"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image7.jpg" data-caption="Leveling the axis"><img loading="lazy" decoding="async" src="img/prop-balancer/image7.jpg" alt="Prop balancer, fig 7"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image8.jpg" data-caption="A prop loaded to balance"><img loading="lazy" decoding="async" src="img/prop-balancer/image8.jpg" alt="Prop balancer, fig 8"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image9.jpg" data-caption="Laser line on the blade"><img loading="lazy" decoding="async" src="img/prop-balancer/image9.jpg" alt="Prop balancer, fig 9"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image10.jpg" data-caption="Stainless tape correction weights"><img loading="lazy" decoding="async" src="img/prop-balancer/image10.jpg" alt="Prop balancer, fig 10"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image11.jpg" data-caption="Walking weights down the blade"><img loading="lazy" decoding="async" src="img/prop-balancer/image11.jpg" alt="Prop balancer, fig 11"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image12.jpg" data-caption="Checking against the pass/fail line"><img loading="lazy" decoding="async" src="img/prop-balancer/image12.jpg" alt="Prop balancer, fig 12"></a></figure>
+          <figure><a class="g-link" href="img/prop-balancer/image13.jpg" data-caption="The finished station"><img loading="lazy" decoding="async" src="img/prop-balancer/image13.jpg" alt="Prop balancer, fig 13"></a></figure>
         </div>
       </section>
 
@@ -89,5 +195,8 @@
 
     </div>
   </main>
+
+  <script src="article.js"></script>
+
 </body>
 </html>

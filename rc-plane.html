@@ -7,7 +7,7 @@
 <meta name="description" content="Competition RC aircraft — propulsion lead, senior design. Jose Lara.">
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -21,8 +21,17 @@
     <span><span class="dim">No. 006</span> &nbsp; 2025</span>
   </div>
 
-  <main class="wrap article">
+  <main class="wrap article story">
     <div class="ruler" aria-hidden="true"></div>
+    <nav class="contents" aria-label="Contents">
+      <p class="contents-label">Contents</p>
+      <a href="#summary">Summary</a>
+      <a href="#build">Build</a>
+      <a href="#results">Results</a>
+      <a href="#specs">Specs</a>
+      <a href="#documents">Documents</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
     <div class="col">
 
       <a class="backlink" href="index.html">Index</a>
@@ -34,18 +43,18 @@
       </header>
       <hr class="rule">
 
-      <section>
+      <section id="summary">
         <p class="label">Summary</p>
         <p>Our senior design team set out to build a fixed-wing aircraft that maximized payload-to-time over a three-lap circuit. As propulsion lead, I owned the powertrain: motor, ESC, battery, and propeller, tuned for the narrow window between thrust and endurance. The result was a high-wing monoprop that hand-launches, belly-lands, and placed 2nd overall while winning best team performance.</p>
       </section>
 
-      <section>
+      <section id="build">
         <p class="label">The Build</p>
         <p>The design started in XFLR, where we ran aerodynamic analysis and control-stability sweeps until the configuration settled: high wing for stability, a single tractor prop, no landing gear to save weight. Every gram mattered against the payload target, so the fuselage was balsa and the wing was foam over a wood spar — light, but stiff enough to survive a hand launch and a belly landing.</p>
         <p>Powertrain selection was the long pole. I sized a 540&nbsp;KV motor against an 80&nbsp;A ESC and a 6S 3300&nbsp;mAh pack, then matched a 13-inch prop to keep the system in its efficient band at cruise while still pulling a 0.85 thrust-to-weight off the launch. Two test flights closed the loop and confirmed the numbers.</p>
       </section>
 
-      <section>
+      <section id="results">
         <p class="label">Results</p>
         <ul class="bullets">
           <li>Won best overall team performance.</li>
@@ -54,7 +63,7 @@
         </ul>
       </section>
 
-      <section>
+      <section id="specs">
         <p class="label">Specifications</p>
         <div class="specs">
           <div class="row"><span class="k">Role</span><span class="dots"></span><span class="v">Propulsion Lead</span></div>
@@ -70,7 +79,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="documents">
         <p class="label">Documents</p>
         <ul class="docs">
           <li><a href="assets/rc-plane/documents/Requirements.pdf" target="_blank">Requirements</a><span class="ext">PDF</span></li>
@@ -80,23 +89,23 @@
         </ul>
       </section>
 
-      <section>
+      <section id="gallery">
         <p class="label">Gallery</p>
         <div class="gallery">
-          <figure><a href="img/rc-plane/image1.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image1.jpg" alt="RC aircraft, fig 1"></a></figure>
-          <figure><a href="img/rc-plane/image2.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image2.jpg" alt="RC aircraft, fig 2"></a></figure>
-          <figure><a href="img/rc-plane/image3.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image3.jpg" alt="RC aircraft, fig 3"></a></figure>
-          <figure><a href="img/rc-plane/image4.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image4.jpg" alt="RC aircraft, fig 4"></a></figure>
-          <figure><a href="img/rc-plane/image5.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image5.jpg" alt="RC aircraft, fig 5"></a></figure>
-          <figure><a href="img/rc-plane/image6.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image6.jpg" alt="RC aircraft, fig 6"></a></figure>
-          <figure><a href="img/rc-plane/image7.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image7.jpg" alt="RC aircraft, fig 7"></a></figure>
-          <figure><a href="img/rc-plane/image8.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image8.jpg" alt="RC aircraft, fig 8"></a></figure>
-          <figure><a href="img/rc-plane/image9.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image9.jpg" alt="RC aircraft, fig 9"></a></figure>
-          <figure><a href="img/rc-plane/image10.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image10.jpg" alt="RC aircraft, fig 10"></a></figure>
-          <figure><a href="img/rc-plane/image11.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image11.jpg" alt="RC aircraft, fig 11"></a></figure>
-          <figure><a href="img/rc-plane/image12.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image12.jpg" alt="RC aircraft, fig 12"></a></figure>
-          <figure><a href="img/rc-plane/image13.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image13.jpg" alt="RC aircraft, fig 13"></a></figure>
-          <figure><a href="img/rc-plane/image14.jpg" target="_blank"><img loading="lazy" decoding="async" src="img/rc-plane/image14.jpg" alt="RC aircraft, fig 14"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image1.jpg" data-caption="The finished airframe"><img loading="lazy" decoding="async" src="img/rc-plane/image1.jpg" alt="RC aircraft, fig 1"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image2.jpg" data-caption="Wing and spar layup"><img loading="lazy" decoding="async" src="img/rc-plane/image2.jpg" alt="RC aircraft, fig 2"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image3.jpg" data-caption="Fuselage framing"><img loading="lazy" decoding="async" src="img/rc-plane/image3.jpg" alt="RC aircraft, fig 3"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image4.jpg" data-caption="Powertrain test"><img loading="lazy" decoding="async" src="img/rc-plane/image4.jpg" alt="RC aircraft, fig 4"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image5.jpg" data-caption="Motor and ESC mount"><img loading="lazy" decoding="async" src="img/rc-plane/image5.jpg" alt="RC aircraft, fig 5"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image6.jpg" data-caption="Battery and payload bay"><img loading="lazy" decoding="async" src="img/rc-plane/image6.jpg" alt="RC aircraft, fig 6"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image7.jpg" data-caption="Control surface check"><img loading="lazy" decoding="async" src="img/rc-plane/image7.jpg" alt="RC aircraft, fig 7"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image8.jpg" data-caption="On the flight line"><img loading="lazy" decoding="async" src="img/rc-plane/image8.jpg" alt="RC aircraft, fig 8"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image9.jpg" data-caption="Prop and spinner"><img loading="lazy" decoding="async" src="img/rc-plane/image9.jpg" alt="RC aircraft, fig 9"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image10.jpg" data-caption="Hand launch"><img loading="lazy" decoding="async" src="img/rc-plane/image10.jpg" alt="RC aircraft, fig 10"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image11.jpg" data-caption="In flight"><img loading="lazy" decoding="async" src="img/rc-plane/image11.jpg" alt="RC aircraft, fig 11"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image12.jpg" data-caption="Belly landing"><img loading="lazy" decoding="async" src="img/rc-plane/image12.jpg" alt="RC aircraft, fig 12"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image13.jpg" data-caption="The team at competition"><img loading="lazy" decoding="async" src="img/rc-plane/image13.jpg" alt="RC aircraft, fig 13"></a></figure>
+          <figure><a class="g-link" href="img/rc-plane/image14.jpg" data-caption="Payload cubes loaded"><img loading="lazy" decoding="async" src="img/rc-plane/image14.jpg" alt="RC aircraft, fig 14"></a></figure>
         </div>
       </section>
 
@@ -107,5 +116,6 @@
     </div>
   </main>
 
+<script src="article.js"></script>
 </body>
 </html>

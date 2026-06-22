@@ -6,3 +6,9 @@
 .claude/
 IMG_1924.JPG
 Jose Lara - Resume.pdf
+
+# raw image drop (optimized copies go into img/)
+_incoming/
+
+# google drive shortcuts
+*.gdoc
