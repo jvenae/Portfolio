@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# local only, never published
+.claude/
+CLAUDE.md
+_incoming/
+*.gdoc
+*.bundle
+
+# loose files at the repo root (photos, documents); site assets live in subfolders
+/*.jpg
+/*.JPG
+/*.jpeg
+/*.heic
+/*.HEIC
+/*.pdf

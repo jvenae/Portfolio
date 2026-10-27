@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) build settings.
+# Anything listed here is left out of the published site.
+exclude:
+  - "*.md"
+  - README.md
+  - CLAUDE.md
+  - _incoming
